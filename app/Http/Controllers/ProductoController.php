@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use Illuminate\Http\Request;
 use App\Models\Producto;
 
@@ -36,7 +37,12 @@ class ProductoController extends Controller
         $producto->descripcion = $request->get('descripcion');
         $producto->precio = $request->get('precio');
 
-        $producto->save();
+        try {
+            $producto->save();
+
+        } catch (Exception $e) {
+            return redirect()->back()->withErrors(['error' => 'Error']);
+        }
 
         return redirect('/productos');
     }
@@ -55,7 +61,6 @@ class ProductoController extends Controller
     public function edit(string $id)
     {
         $producto = Producto::find($id);
-
         return view('producto.edit')->with('producto', $producto);
     }
 
@@ -71,7 +76,12 @@ class ProductoController extends Controller
         $producto->descripcion = $request->get('descripcion');
         $producto->precio = $request->get('precio');
 
-        $producto->save();
+        try {
+            $producto->save();
+        } catch (Exception $e) {
+            $error = 'Error: ' . $e->getMessage();
+            return view('producto.create')->with('error',$error);
+        }
 
         return redirect('/productos');
     }
