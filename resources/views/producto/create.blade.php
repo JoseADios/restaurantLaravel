@@ -1,8 +1,13 @@
-@extends('layouts.base')
+@extends('adminlte::page')
 
-@section('contenido')
-<h2>CREAR REGISTROS</h2>
+@section('title', 'Dashboard')
 
+@section('content_header')
+    <h1>CREAR REGISTROS</h1>
+@stop
+
+@section('content')
+    
 <form action="/productos" method="POST">
     @csrf
     <div class="mb-3">
@@ -37,4 +42,12 @@
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 
 </form>
-@endsection
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+@stop
+
+@section('js')
+    <script> console.log('Hi!'); </script>
+@stop

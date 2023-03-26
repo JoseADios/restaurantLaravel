@@ -1,14 +1,14 @@
-@extends('layouts.base')
+@extends('adminlte::page')
 
-@section('contenido')
+@section('title', 'Dashboard')
 
-@section('css')
-<link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
-@endsection
+@section('content_header')
+    <h1>Menú del restaurante</h1>
+@stop
 
-<h1>Menú</h1>
-
-<a class="btn btn-success mb-3" href="productos/create">CREAR</a>
+@section('content')
+    
+<a class="btn btn-success mb-4" href="productos/create">CREAR</a>
 
 <table id="productos" class="table table-striped caption-top">
     <caption>Lista de platos</caption>
@@ -42,16 +42,23 @@
     </tbody>
 </table>
 
+@stop
+
+@section('css')
+    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/dataTables.bootstrap5.min.css">
+
+@stop
+
 @section('js')
+    
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.13.4/js/dataTables.bootstrap5.min.js"></script>
-
-    <script>
-        $(document).ready(function () {
-            $('#productos').DataTable();
-        });
-    </script>
-@endsection
-@endsection
+<script>
+    $(document).ready(function () {
+        $('#productos').DataTable();
+    });
+</script>
+@stop
