@@ -63,7 +63,7 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>Delicias </b>REST',
     'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
@@ -292,7 +292,7 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar-search',
+            'type'         => 'navbar',
             'text'         => 'search',
             'topnav_right' => true,
         ],
@@ -318,14 +318,14 @@ return [
             'label'       => 4,
             'label_color' => 'success',
         ],
-        ['header' => 'account_settings'],
+        ['header' => 'Configuraciones de la cuenta'],
         [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
+            'text' => 'Perfil de usuario',
+            'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
         [
-            'text' => 'change_password',
+            'text' => 'Cambiar contraseña',
             'url'  => 'admin/settings',
             'icon' => 'fas fa-fw fa-lock',
         ],
