@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Producto;
 
 class ProductoController extends Controller
 {
@@ -11,7 +12,8 @@ class ProductoController extends Controller
      */
     public function index()
     {
-        //
+        $productos = Producto::all();
+        return view('producto.index')->with('productos', $productos);
     }
 
     /**
@@ -19,7 +21,7 @@ class ProductoController extends Controller
      */
     public function create()
     {
-        //
+        return view('producto.create');
     }
 
     /**
@@ -27,7 +29,16 @@ class ProductoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $producto = new Producto();
+
+        $producto->codigo = $request->get('codigo');
+        $producto->nombre = $request->get('nombre');
+        $producto->descripcion = $request->get('descripcion');
+        $producto->precio = $request->get('precio');
+
+        $producto->save();
+
+        return redirect('/productos');
     }
 
     /**
@@ -43,7 +54,9 @@ class ProductoController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $producto = Producto::find($id);
+
+        return view('producto.edit')->with('producto', $producto);
     }
 
     /**
@@ -51,7 +64,16 @@ class ProductoController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $producto = Producto::find($id);
+
+        $producto->codigo = $request->get('codigo');
+        $producto->nombre = $request->get('nombre');
+        $producto->descripcion = $request->get('descripcion');
+        $producto->precio = $request->get('precio');
+
+        $producto->save();
+
+        return redirect('/productos');
     }
 
     /**
@@ -59,6 +81,8 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $articulo = Producto::find($id);
+        $articulo->delete();
+        return redirect('/articulos');
     }
 }

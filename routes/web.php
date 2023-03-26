@@ -17,7 +17,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('producto', 'App\Http\Controllers\ProductoController');
+Route::resource('productos', 'App\Http\Controllers\ProductoController');
 
 Route::middleware([
     'auth:sanctum',
