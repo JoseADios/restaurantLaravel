@@ -17,6 +17,8 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('plato', '');
+
 Route::middleware([
     'auth:sanctum',
     config('jetstream.auth_session'),
