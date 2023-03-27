@@ -18,29 +18,28 @@ class ProductoController extends Controller
     public function callbackFacebook(){
         try {
             $facebookUser = Socialite::driver('facebook')->user();
-            $findUser = User::where('fb_id', $facebookUser->id)->firs();
+            $findUser = User::where('fb_id', $facebookUser->id)->first();
 
             if ($findUser) {
                 Auth::login(($findUser));
-                return redirect()->intended('/productos');
+                return redirect()->intended('productos');
             }else{
                 $newUser = User::create([
                     'name'=> $facebookUser->name,
                     'email'=> $facebookUser->email,
-                    'id'=> $facebookUser->id,
-                    'password'=> encrypt('12345678')
+                    'fb_id'=> $facebookUser->id,
                 ]);
                 Auth::login(($newUser));
-                return redirect()->intended('/productos');
+                return redirect()->intended('productos');
             }
         } catch (Exception $e) {
             dd($e->getMessage());
         }
     }
 
-    public function __construct(){
-        $this->middleware('auth');
-    }
+    // public function __construct(){
+    //     $this->middleware('auth');
+    // }
 
     /**
      * Display a listing of the resource.

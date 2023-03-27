@@ -1,3 +1,4 @@
+
 @extends('adminlte::auth.auth-page', ['auth_type' => 'login'])
 
 @section('adminlte_css_pre')
@@ -44,7 +45,7 @@
 
         {{-- Password field --}}
         <div class="input-group mb-3">
-            <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
+            <input required type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                    placeholder="{{ __('adminlte::adminlte.password') }}">
 
             <div class="input-group-append">
@@ -79,6 +80,13 @@
                 </button>
             </div>
         </div>
+
+        {{-- Login with facebook --}}
+        <div class="flex items-center justify-end mt-4">
+        <i class="bi bi-facebook"></i>
+        <a class="btn btn-block btn-primary" href="{{url('auth/facebook')}}">  Login con Facebook</a>
+        </div>
+
 
     </form>
 @stop

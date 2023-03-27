@@ -292,7 +292,7 @@ return [
     'menu' => [
         // Navbar items:
         [
-            'type'         => 'navbar',
+            'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
         ],
