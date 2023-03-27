@@ -2,12 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Exception;
 use Illuminate\Http\Request;
 use App\Models\Producto;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Facades\Auth;
 
 class ProductoController extends Controller
 {
+    public function redirectFacebook(){
+        return Socialite::driver('facebook')->redirect();
+    }
+    
+    public function callbackFacebook(){
+        try {
+            $facebookUser = Socialite::driver('facebook')->user();
+            $findUser = User::where('fb_id', $facebookUser->id)->firs();
+
+            if ($findUser) {
+                Auth::login(($findUser));
+                return redirect()->intended('/productos');
+            }else{
+                $newUser = User::create([
+                    'name'=> $facebookUser->name,
+                    'email'=> $facebookUser->email,
+                    'id'=> $facebookUser->id,
+                    'password'=> encrypt('12345678')
+                ]);
+                Auth::login(($newUser));
+                return redirect()->intended('/productos');
+            }
+        } catch (Exception $e) {
+            dd($e->getMessage());
+        }
+    }
 
     public function __construct(){
         $this->middleware('auth');
