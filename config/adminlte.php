@@ -312,11 +312,11 @@ return [
             'can'  => 'manage-blog',
         ],
         [
-            'text'        => 'pages',
+            'text'        => 'Platos',
             'url'         => 'admin/pages',
             'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
+            'label'       => 'NEW',
+            'label_color' => 'warning',
         ],
         ['header' => 'Configuraciones de la cuenta'],
         [
