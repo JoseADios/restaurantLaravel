@@ -111,9 +111,9 @@ class ProductoController extends Controller
 
         try {
             $producto->save();
+
         } catch (Exception $e) {
-            $error = 'Error: ' . $e->getMessage();
-            return view('producto.create')->with('error',$error);
+            return redirect()->back()->withErrors(['error' => 'Error']);
         }
 
         return redirect('/productos');

@@ -31,6 +31,18 @@
         <input autocomplete="off" id="precio" name="precio" type="number" step="any" class="form-control" value="{{$producto->precio}}" , tabindex="4">
     </div>
 
+    @if($errors->any())
+    <x-adminlte-callout theme="danger" title-class="text-danger text-uppercase"
+        icon="fas fa-lg fa-exclamation-circle" title="Error al actualizar">
+        <i>Ha ocurrido un error al actualizar los datos!</i>
+    </x-adminlte-callout>
+    {{-- <div class="alert alert-danger" role="alert">
+            @foreach($errors->all() as $error)
+            <li>{{ $error }}</li>
+            @endforeach
+    </div> --}}
+    @endif
+
     <a href="/productos" class="btn btn-secondary" tabindex="5">Cancelar</a>
     <button type="submit" class="btn btn-primary" tabindex="4">Guardar</button>
 

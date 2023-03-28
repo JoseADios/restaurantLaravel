@@ -31,11 +31,15 @@
     </div>
 
     @if($errors->any())
-    <div class="alert alert-danger" role="alert">
+    <x-adminlte-callout theme="danger" title-class="text-danger text-uppercase"
+        icon="fas fa-lg fa-exclamation-circle" title="Error al guardar">
+        <i>Ha ocurrido un error al guardar el plato!</i>
+    </x-adminlte-callout>
+    {{-- <div class="alert alert-danger" role="alert">
             @foreach($errors->all() as $error)
             <li>{{ $error }}</li>
             @endforeach
-    </div>
+    </div> --}}
     @endif
 
     <a href="/productos" class="btn btn-secondary" tabindex="5">Cancelar</a>

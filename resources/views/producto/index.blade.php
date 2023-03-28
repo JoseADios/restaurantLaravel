@@ -29,7 +29,7 @@
             <td>{{$producto->codigo}}</td>
             <td>{{$producto->nombre}}</td>
             <td>{{$producto->descripcion}}</td>
-            <td>{{$producto->precio}}</td>
+            <td>${{$producto->precio}}</td>
             <td>
                 <form action="{{route ('productos.destroy', $producto->id)}}" method="POST">
                     <a href="productos/{{$producto->id}}/edit" class="btn btn-primary">Editar</a>
@@ -58,7 +58,9 @@
 
 <script>
     $(document).ready(function () {
-        $('#productos').DataTable();
+        $('#productos').DataTable({
+           "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]] 
+    });
     });
 </script>
 @stop
