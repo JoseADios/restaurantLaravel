@@ -23,7 +23,6 @@
         </tr>
     </thead>
     <tbody>
-        {{$cont = 0}}
         @foreach ($productos as $producto)
         <tr>
             <td id="idProd" style="display: none">{{$producto->id}}</td>
@@ -47,7 +46,6 @@
                 </div>
             </td>
         </tr>
-        {{$cont = $cont+1}}
         @endforeach
     </tbody>
 </table>
@@ -78,13 +76,12 @@
 {{-- Mostrar detalles del producto --}}
 <script>
     function mostrarProd(id, cod, nombre, src, descripcion, precio) {
-        console.log(id);
         Swal.fire({
             title: nombre,
             text: descripcion,
             imageUrl: 'imagen/'+src,
-            imageWidth: 400,
-            imageHeight: 200,
+            imageWidth: 'auto',
+            imageHeight: 300,
             imageAlt: 'Custom image',
             footer: '$'+precio,
         })

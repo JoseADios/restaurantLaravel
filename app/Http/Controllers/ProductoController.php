@@ -83,7 +83,7 @@ class ProductoController extends Controller
             $producto->save();
 
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => 'Error']);
+            return redirect()->back()->withErrors(['error' => 'Error'.$e->getMessage()]);
         }
 
         return redirect('/productos');

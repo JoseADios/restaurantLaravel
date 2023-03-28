@@ -67,7 +67,7 @@
     @endif
 
     <a href="/productos" class="mb-3 btn btn-secondary" tabindex="5">Cancelar</a>
-    <button type="submit" class="mb-3 ml-5 btn btn-primary" tabindex="4">Guardar</button>
+    <button type="submit" class="mb-3 ml-5 btn btn-primary" style="background-color: #007bff" tabindex="4">Guardar</button>
 
 </form>
 @stop

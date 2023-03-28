@@ -29,7 +29,7 @@
     </div>
 
     <!-- Para ver la imagen seleccionada, de Lo contrario no se -->
-    <div class="grid grid-cols-1 mt-5 mx-7">
+    <div class="d-flex justify-content-center grid grid-cols-1 mt-5 mx-7">
         <img id='imagenSeleccionada'style="max-height: 300px;">
     </div>
 
