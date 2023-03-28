@@ -25,9 +25,9 @@ Route::middleware([
     config('jetstream.auth_session'),
     'verified'
 ])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
+    Route::get('/dash', function () {
+        return view('dash.dash');
+    })->name('dash');
 });
 
 Route::get('auth/facebook', [ProductoController::class, 'redirectFacebook']);

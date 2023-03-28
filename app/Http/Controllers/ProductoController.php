@@ -69,6 +69,15 @@ class ProductoController extends Controller
         $producto->nombre = $request->get('nombre');
         $producto->descripcion = $request->get('descripcion');
         $producto->precio = $request->get('precio');
+        
+        $request->validate(['imagen' => 'required|image|mimes:jpeg,png,svg|max:1024']);
+
+        if($imagen = $request->file('imagen')){
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $producto['imagen'] = "$imagenProducto";
+        }
 
         try {
             $producto->save();
@@ -109,11 +118,22 @@ class ProductoController extends Controller
         $producto->descripcion = $request->get('descripcion');
         $producto->precio = $request->get('precio');
 
+        $request->validate(['imagen' => 'image|mimes:jpeg,png,svg|max:1024']);
+        
+        if($imagen = $request->file('imagen')){
+            $rutaGuardarImg = 'imagen/';
+            $imagenProducto = date('YmdHis'). "." . $imagen->getClientOriginalExtension();
+            $imagen->move($rutaGuardarImg, $imagenProducto);
+            $producto['imagen'] = "$imagenProducto";
+        }else{
+            unset($producto['imagen']);
+        }
+
         try {
             $producto->save();
 
         } catch (Exception $e) {
-            return redirect()->back()->withErrors(['error' => 'Error']);
+            return redirect()->back()->withErrors(['error' => 'Error'.$e->getMessage()]);
         }
 
         return redirect('/productos');
@@ -124,8 +144,8 @@ class ProductoController extends Controller
      */
     public function destroy(string $id)
     {
-        $articulo = Producto::find($id);
-        $articulo->delete();
-        return redirect('/articulos');
+        $producto = Producto::find($id);
+        $producto->delete();
+        return redirect('/productos');
     }
 }

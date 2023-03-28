@@ -253,7 +253,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => '/productos',
+    'dashboard_url' => '/dash',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -312,11 +312,18 @@ return [
             'can'  => 'manage-blog',
         ],
         [
+            'text'        => 'Dashboard',
+            'url'         => '/dash',
+            'icon'        => 'nav-icon fas fa-tachometer-alt',
+            'label'       => 'NEW',
+            'label_color' => 'warning',
+        ],
+        [
             'text'        => 'Platos',
             'url'         => '/productos',
             'icon'        => 'fas fa-utensils',
-            'label'       => 'NEW',
-            'label_color' => 'warning',
+            'label'       => '',
+            'label_color' => '',
         ],
         ['header' => 'Configuraciones de la cuenta'],
         [
@@ -324,11 +331,11 @@ return [
             'url'  => 'user/profile',
             'icon' => 'fas fa-fw fa-user',
         ],
-        [
-            'text' => 'Cambiar contraseña',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
+        // [
+        //     'text' => 'Cambiar contraseña',
+        //     'url'  => 'admin/settings',
+        //     'icon' => 'fas fa-fw fa-lock',
+        // ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',

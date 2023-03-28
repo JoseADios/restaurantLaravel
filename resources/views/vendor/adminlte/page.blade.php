@@ -3,6 +3,7 @@
 @inject('layoutHelper', 'JeroenNoten\LaravelAdminLte\Helpers\LayoutHelper')
 
 @section('adminlte_css')
+    <script src="https://cdn.tailwindcss.com"></script>
     @stack('css')
     @yield('css')
 @stop
