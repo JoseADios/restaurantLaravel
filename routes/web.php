@@ -18,7 +18,7 @@ Route::get('/', function () {
     return view('auth.login');
 });
 
-Route::resource('productos', 'App\Http\Controllers\ProductoController');
+
 
 Route::middleware([
     'auth:sanctum',
@@ -29,6 +29,18 @@ Route::middleware([
         return view('dash.dash');
     })->name('dash');
 });
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified'
+])->group(function () {
+    Route::resource('productos', 'App\Http\Controllers\ProductoController');
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});
+
 
 Route::get('auth/facebook', [ProductoController::class, 'redirectFacebook']);
 Route::get('auth/facebook/callback', [ProductoController::class, 'callbackFacebook']);

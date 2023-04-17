@@ -17,7 +17,7 @@ class ProductoController extends Controller
     
     public function callbackFacebook(){
         try {
-            $facebookUser = Socialite::driver('facebook')->user();
+            $facebookUser = Socialite::driver('facebook')->stateless()->user();
             $findUser = User::where('fb_id', $facebookUser->id)->first();
 
             if ($findUser) {

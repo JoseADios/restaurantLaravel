@@ -68,7 +68,7 @@
 <script>
     $(document).ready(function () {
         $('#productos').DataTable({
-           "lengthMenu": [[5,10,50,-1], [5,10,50,"All"]] 
+           "lengthMenu": [[4,10,50,-1], [5,10,50,"All"]] 
     });
     });
 </script>
