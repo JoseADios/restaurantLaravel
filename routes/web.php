@@ -40,7 +40,3 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 });
-
-
-Route::get('auth/facebook', [ProductoController::class, 'redirectFacebook']);
-Route::get('auth/facebook/callback', [ProductoController::class, 'callbackFacebook']);
