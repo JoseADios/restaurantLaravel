@@ -13,6 +13,7 @@
 @section('body_data', $layoutHelper->makeBodyData())
 
 @section('body')
+    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
     <div class="wrapper">
 
         {{-- Preloader Animation --}}
