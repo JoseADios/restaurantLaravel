@@ -5,7 +5,7 @@
 
     RewriteEngine On
 
-    Content-Security-Policy: upgrade-insecure-requests;
+    Header always set Content-Security-Policy "upgrade-insecure-requests;"
     
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
