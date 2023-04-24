@@ -53,6 +53,8 @@
                 <span class="fas fa-lock {{ config('adminlte.classes_auth_icon', '') }}"></span>
             </div>
         </div>
+        <input name="chrome-autofill-dummy1" style='display:none' disabled/>
+        <input name="chrome-autofill-dummy2" style='display:none' disabled/>
 
         @error('password')
         <span class="invalid-feedback" role="alert">
